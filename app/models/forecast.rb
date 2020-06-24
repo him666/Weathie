@@ -1,11 +1,11 @@
 class Forecast
   include HTTParty
-  attr_accessor(:city, :zipcode, :weather)
+  attr_accessor(:city, :zipcode, :weather_cache)
 
   def initialize(params)
       @city = params[:city]
       @zipcode = params[:zip_code]
-      @weather
+      @weather_cache = true
       @base_uri = "http://api.openweathermap.org/data/2.5/weather?"
       @apikey = ENV['WEATHER_APIKEY']
   end
@@ -22,6 +22,7 @@ class Forecast
 
   def cache_forecast(zipcode)
     Rails.cache.fetch("#{zipcode}", expires_in: 30.minutes) do
+      @weather_cache = false
       get_forecast_by_city
     end
   end

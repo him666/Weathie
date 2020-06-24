@@ -1,2 +1,42 @@
-<h1>Forecast for your Address</h1>
-<%= @forecast_response %>
+<div style="text-align:center;">
+    <h1 style=<%= @cache_color %>>Forecast for your Address</h1>
+    <div>
+        <p>City: <%= @forecast_response[:name] %></p>
+    </div>
+    <div>
+        <p>Country: <%= @forecast_response[:sys][:country] %></p>
+    </div>
+    <div>
+        <p>Sunrise At: <%= Time.at(@forecast_response[:sys][:sunrise]) %></p>
+    </div>
+    <div>
+        <p>Sunset At: <%= Time.at(@forecast_response[:sys][:sunset]) %></p>
+    </div>
+    <div>
+        <p>Timezone: <%= @forecast_response[:timezone] %></p>
+    </div>
+    <div>
+        <p>Main Weather: <%= @forecast_response[:weather].first[:main] %></p>
+    </div>
+    <div>
+        <p>Description: <%= @forecast_response[:weather].first[:description] %></p>
+    </div>
+    <div>
+        <p> Wind Speed: <%= @forecast_response[:wind][:speed] %>Km/h</p>
+    </div>
+    <div>
+        <p> Wind Degrees: <%= @forecast_response[:wind][:deg] %></p>
+    </div>
+    <div>
+        <p>Temp: <%= @forecast_response[:main][:temp] %></p>
+    </div>
+    <div>
+        <p>Sensation: <%= @forecast_response[:main][:feels_like] %></p>
+    </div>
+    <div>
+        <p>Temp Min/Max: <%= @forecast_response[:main][:temp_min] %>/<%= @forecast_response[:main][:temp_max] %></p>
+    </div>
+    <div>
+        <p></p>
+    </div>
+</div>

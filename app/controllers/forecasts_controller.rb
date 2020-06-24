@@ -5,11 +5,9 @@ class ForecastsController < ApplicationController
   end
 
   def show
-    puts "this is the life #{params[:city]}"
     @forecast = Forecast.new(params)
-    puts @forecast.city
     @forecast_response = @forecast.cache_forecast(params[:zip_code])
-    @forecast_response.inspect
+    @cache_color = @forecast.weather_cache ? 'color:blue;' : 'color:black;'
   end
 
 end
