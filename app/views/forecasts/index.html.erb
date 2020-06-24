@@ -1,6 +1,32 @@
 <h1>Weathie</h1>
+
 <p>Forecasts at your fingertips</p>
+
 <p>Insert your Address in the field</p>
-<%= form_tag(show_path, method: :get) %>
-    <%= text_field_tag :query %>
+
+<%= form_tag(show_path, method: :post) %>
+  <div>
+    <%= label_tag(:street, "Street:") %>
+    <%= text_field_tag :street %>
+  </div>
+  
+  <div>
+    <%= label_tag(:city, "City:") %>
+    <%= text_field_tag :city, nil, :required => true %>
+  </div>
+  <div>
+    <%= label_tag(:state, "State:") %>
+    <%= text_field_tag :state, nil, :required => true %>
+  </div>
+    <div>
+    <%= label_tag(:zip_code, "Zip Code:") %>
+    <%= text_field_tag :zip_code, nil, :required => true %>
+  </div>
+  <div>
+    <%= label_tag(:country, "Country:") %>
+    <%= text_field_tag :country %>
+  </div>
+
+  <div>
     <%= submit_tag 'Search Address!'%>
+  </div>
