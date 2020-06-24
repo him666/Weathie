@@ -1,2 +1,6 @@
-<h1>Forecasts#index</h1>
-<p>Find me in app/views/forecasts/index.html.erb</p>
+<h1>Weathie</h1>
+<p>Forecasts at your fingertips</p>
+<p>Insert your Address in the field</p>
+<%= form_tag(show_path, method: :get) %>
+    <%= text_field_tag :query %>
+    <%= submit_tag 'Search Address!'%>
