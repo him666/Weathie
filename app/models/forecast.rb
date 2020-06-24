@@ -12,7 +12,6 @@ class Forecast
   
   def get_forecast_by_city
     uri = "#{@base_uri}q=#{@city}&appid=#{@apikey}"
-    puts uri
     get_forecast(uri)
   end
 
@@ -21,9 +20,12 @@ class Forecast
     get_forecast(uri)
   end
 
-  def cache_forecast(zipCode)
-    
+  def cache_forecast(zipcode)
+    Rails.cache.fetch("#{zipcode}", expires_in: 30.minutes) do
+      get_forecast_by_city
+    end
   end
+
   def get_forecast(uri)
     puts uri
     response = HTTParty.get("#{@base_uri}q=#{@city}&appid=#{@apikey}", format: :plain)

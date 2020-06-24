@@ -8,7 +8,7 @@ class ForecastsController < ApplicationController
     puts "this is the life #{params[:city]}"
     @forecast = Forecast.new(params)
     puts @forecast.city
-    @forecast_response = @forecast.get_forecast_by_city
+    @forecast_response = @forecast.cache_forecast(params[:zip_code])
     @forecast_response.inspect
   end
 
