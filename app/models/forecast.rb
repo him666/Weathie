@@ -29,7 +29,7 @@ class Forecast
 
   def get_forecast(uri)
     puts uri
-    response = HTTParty.get("#{@base_uri}q=#{@city}&appid=#{@apikey}", format: :plain)
+    response = HTTParty.get("#{@base_uri}q=#{@city}&appid=#{@apikey}&units=imperial", format: :plain)
     JSON.parse response, symbolize_names: true
   end
 
